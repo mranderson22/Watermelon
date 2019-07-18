@@ -2,7 +2,7 @@ import React from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
-import { startLogin } from '../actions/auth';
+import { startSignup } from '../actions/auth';
 
 const FormLayout = ({
   errors,
@@ -11,7 +11,15 @@ const FormLayout = ({
 }) => {
   return (
     <Form className="contactForm">
-      <p>Log in</p>
+      <p>Join Us!</p>
+      <div className="inputField">
+        { touched.first && errors.first && <p className="formError formError-first">{errors.first}</p> }
+        <Field type="text" name="first" placeholder="First Name" autoComplete="sdfsessdf" className="inputField__input inputField__input-first" />
+      </div>
+      <div className="inputField">
+        { touched.last && errors.last && <p className="formError formError-first">{errors.last}</p> }
+        <Field type="text" name="last" placeholder="Last Name" autoComplete="sdfsessdf" className="inputField__input inputField__input-first" />
+      </div>
       <div className="inputField">
         { touched.email && errors.email && <p className="formError formError-first">{errors.email}</p> }
         <Field type="email" name="email" placeholder="Your Email" autoComplete="sdfsessdf" className="inputField__input inputField__input-first" />
@@ -20,20 +28,24 @@ const FormLayout = ({
         { touched.password && errors.password && <p className="formError">{errors.password}</p> }
         <Field type="password" name="password" placeholder="Your Password" autoComplete="asdfsdfd" />
       </div>
-      <button className="btn" disabled={isSubmitting} type="submit">Go</button>
+      <button className="btn" disabled={isSubmitting} type="submit">Create Account</button>
     </Form>
   )
 }
 
-const LoginForm = withFormik({
+const SignupForm = withFormik({
   mapPropsToValues() {
     return {
+      first: '',
+      last:'',
       email: '',
       password: ''
     }
   },
 
   validationSchema: Yup.object().shape({
+    first: Yup.string(),
+    last: Yup.string(),
     email: Yup.string().email()
     .required('Your Email is required!'),
     password: Yup.string()
@@ -43,7 +55,7 @@ const LoginForm = withFormik({
   }),
 
   handleSubmit(values, { props, resetForm, setSubmitting }) {
-      props.startLogin(values)
+      props.startSignup(values)
       resetForm()
       setSubmitting(true)
       setTimeout(() => {
@@ -53,7 +65,7 @@ const LoginForm = withFormik({
 })(FormLayout)
 
 const mapDispatchToProps = (dispatch) => ({
-  startLogin: (values) => dispatch(startLogin(values))
+  startSignup: (values) => dispatch(startSignup(values))
 })
 
-export default connect(undefined, mapDispatchToProps)(LoginForm);
+export default connect(undefined, mapDispatchToProps)(SignupForm);

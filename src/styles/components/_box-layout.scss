@@ -1,6 +1,5 @@
 .box-layout {
-  background: url('/images/bg.jpg');
-  background-size: cover;
+  background: url('/images/watermelon-bg.jpg');
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,7 +7,7 @@
   width: 100vw;
 
   &__box {
-    background: fade-out(#fff, .15);
+    background: fade-out($green, .15);
     border-radius: 3px;
     text-align: center;
     width: 25rem;
@@ -16,7 +15,12 @@
   }
 
   &__title {
+    color: white;
     margin: 0 0 $m-size 0;
     line-height: 1;
+  }
+
+  &__footer {
+    cursor: pointer;
   }
 }
