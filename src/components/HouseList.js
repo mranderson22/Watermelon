@@ -1,18 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import HouseButton from './HouseButton';
 
-export const HouseList = (props) => {
+export const HouseList = () => {
+  const houses = useSelector(state => state.houses)
 
   return (
     <div>
     {
-        props.houses.length === 0 ? (
+        houses.length === 0 ? (
           <div>
             <span>Start by Adding a House!</span>
           </div>
         ) : (
-          props.houses.map((house) => {
-            return <div key={house.id}>{house.houseName}</div>
+          houses.map((house) => {
+            return <HouseButton key={house.id} {...house} />
           })
         )
       }
@@ -20,10 +22,4 @@ export const HouseList = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    houses: state.houses
-  }
-}
-
-export default connect(mapStateToProps)(HouseList);
+export default HouseList;

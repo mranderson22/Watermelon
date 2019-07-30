@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import LoginForm from './LoginForm';
-import { connect } from 'react-redux';
 import SignupForm from './SignupForm';
 
 const LoginPage = () => {
-  const [member, setMember] = React.useState(true)
+  const [member, setMember] = useState(true)
 
   const loginSwitch = () => {
     setMember(!member)

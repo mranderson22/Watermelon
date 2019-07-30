@@ -35,7 +35,7 @@ firebase.auth().onAuthStateChanged((user) => {
     store.dispatch(startSetHouses()).then(() => {
       renderApp();
         if (history.location.pathname === '/') {
-          history.push('/dashboard');
+          history.push('/houseSelect');
         }
     });
   }
