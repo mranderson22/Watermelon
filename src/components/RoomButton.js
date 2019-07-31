@@ -1,7 +1,7 @@
 import React from 'react';
 
-const RoomButton = () => (
-  <div>RoomButton</div>
+const RoomButton = ({ roomName, id }) => (
+  <div>{roomName}</div>
 )
 
 export default RoomButton;

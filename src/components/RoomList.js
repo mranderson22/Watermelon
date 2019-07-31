@@ -1,20 +1,22 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import RoomButton from './RoomButton';
 
-export const HouseList = ({ houseID }) => {
-  const rooms = useSelector(state => state.houses)
-
+export const RoomList = (props) => {
+  const rooms = props.house.rooms
+  console.log(rooms)
+  const roomsArr = Object.values(rooms)
   return (
     <div>
     {
         rooms.length === 0 ? (
           <div>
-            <span>Start by Adding a House!</span>
+            <span>Add a Room</span>
           </div>
-        ) : (
-          rooms.map((room) => {
-            return <RoomButton key={room.id} {...room} />
+        ) : ( 
+          roomsArr.map((room) => {
+            console.log(room)
+            return <RoomButton key={room} {...room} />
           })
         )
       }
@@ -22,4 +24,5 @@ export const HouseList = ({ houseID }) => {
   )
 }
 
-export default HouseList;
+
+export default RoomList;
