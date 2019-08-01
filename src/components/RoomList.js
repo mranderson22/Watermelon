@@ -4,7 +4,6 @@ import RoomButton from './RoomButton';
 
 export const RoomList = (props) => {
   const rooms = props.house.rooms
-  console.log(rooms)
   const roomsArr = Object.values(rooms)
   return (
     <div>
@@ -15,7 +14,6 @@ export const RoomList = (props) => {
           </div>
         ) : ( 
           roomsArr.map((room) => {
-            console.log(room)
             return <RoomButton key={room} {...room} />
           })
         )
