@@ -25,7 +25,7 @@ export class House extends React.Component {
             }}>
             Add Room
           </Link>
-          {house.rooms && <RoomList house={house} />}
+          {house.rooms ? <RoomList house={house} /> : <div>Add a Room!</div>}
         </div>
       </div>
     )

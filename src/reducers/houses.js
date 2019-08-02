@@ -15,12 +15,10 @@ export default (state = {}, action) => {
                 ...house.rooms,
                 [action.id] : action.room
               }
-              
             }
           } else {
             return house
           }
-          
         })
       case 'SET_HOUSES':
         return action.houses;

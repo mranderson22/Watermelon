@@ -33,12 +33,12 @@ export const startSetHouses = () => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
     return database.ref(`users/${uid}/houses`).once('value').then((snapshot) => {
-      const houses = [];
+      const houses  = [];
 
       snapshot.forEach((childSnapshot) => {
         houses.push({
           id: childSnapshot.key,
-          ...childSnapshot.val()
+          ...childSnapshot.val(),
         });
       });
 

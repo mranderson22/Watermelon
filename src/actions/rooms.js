@@ -22,7 +22,7 @@ export const startAddRoom = (roomData = {}) => {
       dispatch(addRoom(
         house,
         room,
-        ref.key
+        ref.key  
       ));
     });
   };
